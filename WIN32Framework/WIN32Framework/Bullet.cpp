@@ -1,4 +1,5 @@
 #include "Bullet.h"
+#include "G_Enemy.h"
 
 void Bullet::Start()
 {
@@ -6,26 +7,31 @@ void Bullet::Start()
 	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
 
-	Speed = 10.0f;
+	Speed = 15.0f;
 }
 
-/*
 void Bullet::Start(Vector3 _position)
 {
 	transform.position = _position;
 	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
-	transform.scale = Vector3(100.0f, 100.0f, 0.0f);
+	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
+
+	Speed = 15.0f;
 }
-*/
 
 int Bullet::Update()
 {
 	transform.position.x += Speed;
-
+	//transform.position = g_enemy->GetPosition();
 	if (transform.position.x > WIDTH)
 		return 1;
 
 	return 0;
+}
+
+void Bullet::Update(GameObject* _other)
+{
+	// 사각형인 bullet과 타원형인 _other
 }
 
 void Bullet::Render(HDC hdc)

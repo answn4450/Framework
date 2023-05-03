@@ -34,6 +34,9 @@
     <Filter Include="소스 파일\01.GameObject\Enemy">
       <UniqueIdentifier>{53ca5b45-d34e-4067-aedf-18b267954fb4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Global">
+      <UniqueIdentifier>{a7ffe63a-1d9f-4d44-b58f-a49c7e7c9ef9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -51,7 +54,7 @@
     <ClInclude Include="Define.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
-    <ClInclude Include="include.h">
+    <ClInclude Include="Include.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
     <ClInclude Include="MainUpdate.h">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>소스 파일\01.GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="G_Enemy.h">
+      <Filter>헤더 파일\Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

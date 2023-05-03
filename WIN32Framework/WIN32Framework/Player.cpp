@@ -23,6 +23,47 @@ void Player::Start()
 	}
 }
 
+void Player::Update(GameObject* _other)
+{
+	if (GetAsyncKeyState(VK_UP))
+	{
+		transform.position.y -= 5.0f;
+	}
+
+	if (GetAsyncKeyState(VK_DOWN))
+	{
+		transform.position.y += 5.0f;
+	}
+
+	if (GetAsyncKeyState(VK_LEFT))
+	{
+		transform.position.x -= 5.0f;
+	}
+
+	if (GetAsyncKeyState(VK_RIGHT))
+	{
+		transform.position.x += 5.0f;
+	}
+
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		CreateBullet();
+	}
+
+	int index = -1;
+	for (int i = 0; i < BULLETCOUNT; ++i)
+	{
+		if (bulletList[i] != nullptr)
+		{
+			//if (bulletList[i]->Update(_other))
+			if (bulletList[i]->Update())
+			{
+				index = i;
+			}
+		}
+	}
+}
+
 int Player::Update() {
 	if (GetAsyncKeyState(VK_UP))
 	{
@@ -73,10 +114,10 @@ int Player::Update() {
 
 void Player::Render(HDC hdc) {
 	Rectangle(hdc,
-		(int)transform.position.x - transform.scale.x * 0.5f,
-		(int)transform.position.y - transform.scale.y * 0.5f,
-		(int)transform.position.x + transform.scale.x * 0.5f,
-		(int)transform.position.y + transform.scale.y * 0.5f
+		(int)(transform.position.x - transform.scale.x * 0.5f),
+		(int)(transform.position.y - transform.scale.y * 0.5f),
+		(int)(transform.position.x + transform.scale.x * 0.5f),
+		(int)(transform.position.y + transform.scale.y * 0.5f)
 	);
 
 	for (int i = 0; i < BULLETCOUNT; ++i)
@@ -95,8 +136,7 @@ GameObject* Player::CreateBullet()
 {
 	GameObject* bullet = new Bullet;
 
-	bullet->Start();
-	bullet->SetPosition(transform.position);
+	bullet->Start(transform.position);
 
 	for (int i = 0; i < BULLETCOUNT; ++i)
 	{

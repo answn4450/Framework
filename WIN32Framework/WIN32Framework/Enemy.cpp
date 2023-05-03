@@ -28,10 +28,10 @@ int Enemy::Update()
 void Enemy::Render(HDC hdc)
 {
 	Ellipse(hdc,
-		(int)transform.position.x - transform.scale.x * 0.5f,
-		(int)transform.position.y - transform.scale.y * 0.5f,
-		(int)transform.position.x + transform.scale.x * 0.5f,
-		(int)transform.position.y + transform.scale.y * 0.5f
+		(int)(transform.position.x - transform.scale.x * 0.5f),
+		(int)(transform.position.y - transform.scale.y * 0.5f),
+		(int)(transform.position.x + transform.scale.x * 0.5f),
+		(int)(transform.position.y + transform.scale.y * 0.5f)
 	);
 }
 

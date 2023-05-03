@@ -7,6 +7,11 @@ private:
 	GameObject* bulletList[BULLETCOUNT];
 public:
 	virtual void Start();
+	virtual void Start(Vector3 _position)override
+	{
+
+	}
+	virtual void Update(GameObject* _other)override;
 	virtual int Update();
 	virtual void Render(HDC hdc);
 	virtual void Destroy();

@@ -1,6 +1,7 @@
 #include "MainUpdate.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "G_Enemy.h"
 
 MainUpdate::MainUpdate() : m_pPlayer(NULL)
 {
@@ -18,14 +19,22 @@ void MainUpdate::Start()
 	m_pPlayer = new Player();
 	m_pPlayer->Start();
 
-	m_pEnemy = g_pEnemy = new Enemy();
+	m_pEnemy = new Enemy();
+	GameObject* g_enemy = m_pEnemy;
+	//int testNum = 3;
+
 	m_pEnemy->Start();
 }
 
 void MainUpdate::Update()
 {
-	if (m_pEnemy)
-		m_pPlayer->Update();
+	if (m_pPlayer)
+		if (m_pEnemy)
+			m_pPlayer->Update(m_pEnemy);
+		else
+		{
+			m_pPlayer->Update();
+		}
 
 	if (m_pEnemy)
 		m_pEnemy->Update();

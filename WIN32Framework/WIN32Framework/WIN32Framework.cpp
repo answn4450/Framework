@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "WIN32Framework.h"
-#include "include.h"
+#include "Include.h"
 #include "MainUpdate.h"
 
 #define MAX_LOADSTRING 100

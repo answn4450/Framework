@@ -1,18 +1,17 @@
 #pragma once
-#include "include.h"
+#include "Include.h"
 
 class GameObject
 {
 protected:
 	Transform transform;
-	//Vector3 vector
 	float Speed;
-	RECT rcPoint;
 
 public:
 	virtual void Start()PURE;
-	//virtual void Start(Vector3 _position)PURE;
+	virtual void Start(Vector3 _position)PURE;
 	virtual int Update()PURE;
+	virtual void Update(GameObject* _collision)PURE;
 	virtual void Render(HDC hdc)PURE;
 	virtual void Destroy()PURE;
 public:
