@@ -3,11 +3,16 @@
 
 class Player : public GameObject
 {
+private:
+	GameObject* bulletList[BULLETCOUNT];
 public:
-	void Start();
-	void Update();
-	void Render(HDC hdc);
-	void Destroy();
+	virtual void Start();
+	virtual int Update();
+	virtual void Render(HDC hdc);
+	virtual void Destroy();
+public:
+	GameObject* CreateBullet();
+
 public:
 	Player();
 	~Player();

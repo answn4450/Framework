@@ -19,14 +19,20 @@
     <Filter Include="소스 파일\00.MainUpdate">
       <UniqueIdentifier>{612265c3-8338-4401-9dcf-ec2203de357a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Include">
-      <UniqueIdentifier>{7729055e-f89c-4f48-9e63-870e812412c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01.GameObject">
       <UniqueIdentifier>{066ab50a-fe23-4a8f-8516-549029b9fa47}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\01.GameObject\Player">
       <UniqueIdentifier>{a39aa859-a5fd-42dd-9aaa-cf7c0bcfaa07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.GameObject\Bullet">
+      <UniqueIdentifier>{a1414d65-d9f9-485c-aa2e-ff5d90f53c6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Include">
+      <UniqueIdentifier>{7729055e-f89c-4f48-9e63-870e812412c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.GameObject\Enemy">
+      <UniqueIdentifier>{53ca5b45-d34e-4067-aedf-18b267954fb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,9 +51,6 @@
     <ClInclude Include="Define.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>소스 파일\01.GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="include.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
@@ -60,6 +63,15 @@
     <ClInclude Include="Player.h">
       <Filter>소스 파일\01.GameObject\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\01.GameObject\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>소스 파일\01.GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>소스 파일\01.GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32Framework.cpp">
@@ -68,11 +80,17 @@
     <ClCompile Include="MainUpdate.cpp">
       <Filter>소스 파일\00.MainUpdate</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>소스 파일\01.GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\01.GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\01.GameObject\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\01.GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>소스 파일\01.GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
