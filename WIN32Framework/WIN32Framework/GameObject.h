@@ -10,7 +10,7 @@ protected:
 	string Key;
 public:
 	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
-	virtual void Start() = 0;
+	virtual GameObject* Start() = 0;
 	virtual void Start(Vector3 _position) = 0;
 	virtual int Update() = 0;
 	virtual void Render(HDC hdc) = 0;

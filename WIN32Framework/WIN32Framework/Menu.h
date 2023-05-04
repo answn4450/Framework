@@ -1,18 +1,16 @@
 #pragma once
-#include "Include.h";
+#include "Scene.h"
 
-class Menu
+class Menu : public Scene
 {
 public:
-	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
-	virtual void Start() = 0;
-	virtual int Update() = 0;
-	virtual void Render(HDC hdc) = 0;
-	virtual void Destroy() = 0;
+	virtual void Start()override;
+	virtual void Update()override;
+	virtual void Render(HDC hdc)override;
+	virtual void Destroy()override;
 
-private:
-	Menu();
 public:
-	~Menu();
+	Menu();
+	virtual ~Menu();
 };
 

@@ -2,17 +2,12 @@
 
 #include "Include.h"
 
-
 class Scene;
 class SceneManager
 {
 private:
 	static SceneManager* Instance;
-	HDC m_hdc;
 
-	RECT rcPoint;
-	GameObject* m_pPlayer;
-	GameObject* m_pEnemy;
 public:
 	static SceneManager* GetInstance()
 	{
@@ -24,7 +19,7 @@ private:
 	Scene* SceneState;
 public:
 	void SetScene(SCENEID _State);
-	int Update();
+	void Update();
 	void Render(HDC hdc);
 	void Destroy();
 private:
@@ -32,6 +27,3 @@ private:
 public:
 	~SceneManager();
 };
-
-
-SceneManager* SceneManager::Instance = nullptr;

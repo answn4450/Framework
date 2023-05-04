@@ -1,19 +1,18 @@
 #pragma once
-#include "Include.h";
+#include "Include.h"
 
 class Scene
 {
 public:
 	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
 
-	virtual void Start() = 0;
-	virtual int Update() = 0;
-	virtual void Render(HDC hdc) = 0;
-	virtual void Destroy() = 0;
+	virtual void Start()PURE;
+	virtual void Update()PURE;
+	virtual void Render(HDC hdc)PURE;
+	virtual void Destroy()PURE;
 
-private:
-	Scene();
 public:
-	~Scene();
+	Scene();
+	virtual ~Scene();
 };
 

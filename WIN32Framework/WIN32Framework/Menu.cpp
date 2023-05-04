@@ -5,17 +5,17 @@ void Menu::Start()
 {
 }
 
-int Menu::Update()
+void Menu::Update()
 {
-	if (GetAsyncKeyState('A'))
+	if (GetAsyncKeyState('S'))
 	{
-		SceneManager::GetInstance()->SetScene(MENU);
+		SceneManager::GetInstance()->SetScene(STAGE);
 	}
-	return 0;
 }
 
 void Menu::Render(HDC hdc)
 {
+	Rectangle(hdc, 500, 100, 600, 600);
 }
 
 void Menu::Destroy()

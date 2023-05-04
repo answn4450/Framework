@@ -10,9 +10,8 @@ typedef struct tagVector3
 	
 	tagVector3(float _x, float _y, float _z) 
 		: x(_x), y(_y), z(_z) {}
-
-	//tagVector3()
 } Vector3;
+
 
 typedef struct tagTransform
 {

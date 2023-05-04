@@ -1,5 +1,4 @@
 #include "Player.h"
-//#include "GameObject.h"
 #include "Bullet.h"
 #include "ObjectManager.h"
 
@@ -12,11 +11,13 @@ Player::~Player()
 {
 }
 
-void Player::Start()
+GameObject* Player::Start()
 {
 	transform.position = Vector3(WIDTH * 0.5f, HEIGHT *0.5f, 0.0f);
 	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(100.0f, 100.0f, 0.0f);
+
+	return this;
 }
 
 
@@ -43,7 +44,7 @@ int Player::Update() {
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
-		//ObjectManager::GetInstance()->AddObjectList(CreateBullet());
+		ObjectManager::GetInstance()->AddObjectList(CreateBullet());
 	}
 	
 
@@ -58,10 +59,6 @@ void Player::Render(HDC hdc) {
 		(int)(transform.position.x + transform.scale.x * 0.5f),
 		(int)(transform.position.y + transform.scale.y * 0.5f)
 	);
-
-	for (int i = 0; i < BULLETCOUNT; ++i)
-	{
-	}
 }
 
 void Player::Destroy() {}

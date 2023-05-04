@@ -11,5 +11,4 @@ using namespace std;
 
 #include "Define.h"
 #include "Struct.h"
-#include "GameObject.h"
 #include "Enum.h"

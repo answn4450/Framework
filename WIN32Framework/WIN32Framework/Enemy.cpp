@@ -1,20 +1,21 @@
 #include "Enemy.h"
 
-void Enemy::Start()
+GameObject* Enemy::Start()
 {
 	srand((unsigned int)GetTickCount64());
-	/*
 	transform.position = Vector3(
 		WIDTH + 75,
 		(float)(rand() % (HEIGHT - 150) + 75),
-		0.0f);
-	*/
-	transform.position = Vector3(WIDTH, HEIGHT / 2, 0.0f);
+		0.0f
+	);
+	//transform.position = Vector3(WIDTH, HEIGHT / 2, 0.0f);
 	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(150.0f, 150.0f, 0.0f);
 
 	Speed = 0.5f;
 	Key = "Enemy";
+
+	return this;
 }
 
 int Enemy::Update()

@@ -1,10 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
+
 class Player : public GameObject
 {
 public:
-	virtual void Start();
+	virtual GameObject* Start();
 	virtual void Start(Vector3 _position)override
 	{
 

@@ -2,6 +2,7 @@
 
 #include "Include.h"
 
+class GameObject;
 class ObjectManager
 {
 private:
@@ -9,13 +10,13 @@ private:
 public:
 	static ObjectManager* GetInstance()
 	{
-		if (Instance == NULL)
+		if (Instance == nullptr)
 			Instance = new ObjectManager;
 		return Instance;
 	}
 
 private:
-	map<string, list<GameObject*>> ObjectList[COUNT];
+	map<string, list<GameObject*>> ObjectList;
 public:
 	void AddObjectList(GameObject* _Object);
 	list<GameObject*>* GetObjectList(string key);
@@ -24,6 +25,3 @@ private:
 public:
 	~ObjectManager();
 };
-
-
-ObjectManager* ObjectManager::Instance = nullptr;

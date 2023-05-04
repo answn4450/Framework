@@ -4,13 +4,24 @@
 #include "Menu.h"
 #include "Stage.h"
 
+SceneManager* SceneManager::Instance = nullptr;
+
+SceneManager::SceneManager() : SceneState(nullptr)
+{
+
+}
+
+SceneManager::~SceneManager()
+{
+
+}
 
 void SceneManager::SetScene(SCENEID _State)
 {
 	if (SceneState != nullptr)
 	{
 		delete SceneState;
-		SceneState = nullptr
+		SceneState = nullptr;
 	}
 
 	switch (_State)
@@ -27,13 +38,12 @@ void SceneManager::SetScene(SCENEID _State)
 		SceneState = new Stage;
 		break;
 	}
+	SceneState->Start();
 }
 
-int SceneManager::Update()
+void SceneManager::Update()
 {
 	SceneState->Update();
-
-	return 0;
 }
 
 void SceneManager::Render(HDC hdc)
@@ -43,15 +53,7 @@ void SceneManager::Render(HDC hdc)
 
 void SceneManager::Destroy()
 {
-	SceneState->Destroy();
-}
-
-SceneManager::SceneManager()
-{
-
-}
-
-SceneManager::~SceneManager()
-{
-
+	delete SceneState;
+	SceneState = nullptr;
+	//SceneState->Destroy();
 }
