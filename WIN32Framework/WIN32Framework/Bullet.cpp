@@ -8,6 +8,8 @@ void Bullet::Start()
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
 
 	Speed = 15.0f;
+
+	Key = "Bullet";
 }
 
 void Bullet::Start(Vector3 _position)
@@ -17,6 +19,8 @@ void Bullet::Start(Vector3 _position)
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
 
 	Speed = 15.0f;
+
+	Key = "Bullet";
 }
 
 int Bullet::Update()
@@ -29,18 +33,14 @@ int Bullet::Update()
 	return 0;
 }
 
-void Bullet::Update(GameObject* _other)
-{
-	// 사각형인 bullet과 타원형인 _other
-}
 
 void Bullet::Render(HDC hdc)
 {
 	Rectangle(hdc,
-		(int)transform.position.x - transform.scale.x * 0.5f,
-		(int)transform.position.y - transform.scale.y * 0.5f,
-		(int)transform.position.x + transform.scale.x * 0.5f,
-		(int)transform.position.y + transform.scale.y * 0.5f
+		(int)(transform.position.x - transform.scale.x * 0.5f),
+		(int)(transform.position.y - transform.scale.y * 0.5f),
+		(int)(transform.position.x + transform.scale.x * 0.5f),
+		(int)(transform.position.y + transform.scale.y * 0.5f)
 	);
 }
 

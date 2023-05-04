@@ -5,6 +5,11 @@
 #include <map>
 #include <string>
 #include <Windows.h>
+#include <math.h>
+
+using namespace std;
 
 #include "Define.h"
 #include "Struct.h"
+#include "GameObject.h"
+#include "Enum.h"
