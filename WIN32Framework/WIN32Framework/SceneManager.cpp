@@ -55,5 +55,4 @@ void SceneManager::Destroy()
 {
 	delete SceneState;
 	SceneState = nullptr;
-	//SceneState->Destroy();
 }

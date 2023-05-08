@@ -14,7 +14,7 @@ Player::~Player()
 GameObject* Player::Start()
 {
 	transform.position = Vector3(WIDTH * 0.5f, HEIGHT *0.5f, 0.0f);
-	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
+	transform.direction = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(100.0f, 100.0f, 0.0f);
 
 	return this;

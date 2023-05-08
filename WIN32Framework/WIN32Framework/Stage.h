@@ -6,6 +6,9 @@ class Stage : public Scene
 {
 private:
 	GameObject* m_pPlayer;
+	list<GameObject*>* BulletList;
+	list<GameObject*>* EnemyList;
+
 public:
 	virtual void Start()override;
 	virtual void Update()override;

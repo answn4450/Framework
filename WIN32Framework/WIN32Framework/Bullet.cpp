@@ -4,7 +4,7 @@
 GameObject* Bullet::Start()
 {
 	transform.position = Vector3(700.0f, 350.0f, 0.0f);
-	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
+	transform.direction = Vector3(-1.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
 
 	Speed = 15.0f;
@@ -17,7 +17,7 @@ GameObject* Bullet::Start()
 void Bullet::Start(Vector3 _position)
 {
 	transform.position = _position;
-	transform.rotation = Vector3(0.0f, 0.0f, 0.0f);
+	transform.direction = Vector3(0.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
 
 	Speed = 15.0f;

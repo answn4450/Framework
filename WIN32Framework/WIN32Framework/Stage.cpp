@@ -5,12 +5,13 @@
 //#include "G_Enemy.h"
 
 
-Stage::Stage()
-{ 
+Stage::Stage() : m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
+{
 }
 
 Stage::~Stage()
 {
+	Destroy();
 }
 
 void Stage::Start()
@@ -18,6 +19,9 @@ void Stage::Start()
 	m_pPlayer = new Player();
 	m_pPlayer->Start();
 	
+	BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
+	EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
+
 	//ObjectManager::GetInstance()->AddObjectList(
 		//(new Enemy)->Start());
 }
@@ -25,18 +29,27 @@ void Stage::Start()
 void Stage::Update()
 {
 	list<GameObject*>* EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
-	list<GameObject*>* BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
 
 	if (m_pPlayer)
 		m_pPlayer->Update();
+
+	if (EnemyList != nullptr && !EnemyList->empty())
+	{
+		for (list<GameObject*>::iterator iter = EnemyList->begin(); iter != EnemyList->end(); ++iter)
+			(*iter)->Update();
+	}
+
+	if (BulletList != nullptr && !BulletList->empty())
+	{
+		for (list<GameObject*>::iterator iter = BulletList->begin(); iter != BulletList->end(); ++iter)
+			(*iter)->Update();
+	}
+	else
+		BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
 }
 
 void Stage::Render(HDC _hdc)
 {
-	list<GameObject*>* EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
-	list<GameObject*>* BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
-	//Rectangle(_hdc, 0, 0, WIDTH, HEIGHT);
-
 	if (m_pPlayer)
 		m_pPlayer->Render(_hdc);
 
@@ -59,5 +72,25 @@ void Stage::Destroy()
 	{
 		delete m_pPlayer;
 		m_pPlayer = NULL;
+	}
+
+	if (EnemyList != nullptr && !EnemyList->empty())
+	{
+		for (list<GameObject*>::iterator iter = EnemyList->begin(); iter != EnemyList->end(); ++iter)
+		{
+			delete (*iter);
+			(*iter) = nullptr;
+		}
+		EnemyList->clear();
+	}
+
+	if (BulletList != nullptr && !BulletList->empty())
+	{
+		for (list<GameObject*>::iterator iter = BulletList->begin(); iter != BulletList->end(); ++iter)
+		{
+			delete (*iter);
+			(*iter) = nullptr;
+		}
+		BulletList->clear();
 	}
 }
