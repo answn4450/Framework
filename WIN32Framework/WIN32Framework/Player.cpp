@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "ObjectManager.h"
+#include "InputManager.h"
 
 
 Player::Player()
@@ -22,27 +23,28 @@ GameObject* Player::Start()
 
 
 int Player::Update() {
-	if (GetAsyncKeyState(VK_UP))
+	DWORD dwKey = InputManager::GetInstance()->GetKey();
+	if (dwKey & KEYID_UP)
 	{
 		transform.position.y -= 5.0f;
 	}
 
-	if (GetAsyncKeyState(VK_DOWN))
+	if (dwKey & KEYID_DOWN)
 	{
 		transform.position.y += 5.0f;
 	}
 
-	if (GetAsyncKeyState(VK_LEFT))
+	if (dwKey & KEYID_LEFT)
 	{
 		transform.position.x -= 5.0f;
 	}
 
-	if (GetAsyncKeyState(VK_RIGHT))
+	if (dwKey & KEYID_RIGHT)
 	{
 		transform.position.x += 5.0f;
 	}
 
-	if (GetAsyncKeyState(VK_SPACE))
+	if (dwKey & KEYID_SPACE)
 	{
 		ObjectManager::GetInstance()->AddObjectList(CreateBullet());
 	}
