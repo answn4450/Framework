@@ -1,7 +1,6 @@
 #include "InputManager.h"
 #include "include.h"
 
-InputManager* InputManager::Instance = nullptr;
 
 void InputManager::CheckKey()
 {
@@ -32,3 +31,4 @@ InputManager::InputManager()
 InputManager::~InputManager()
 {
 }
+

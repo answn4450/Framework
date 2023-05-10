@@ -19,8 +19,8 @@ void Stage::Start()
 	m_pPlayer = new Player();
 	m_pPlayer->Start();
 	
-	BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
-	EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
+	BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
+	EnemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
 
 	//ObjectManager::GetInstance()->AddObjectList(
 		//(new Enemy)->Start());
@@ -28,7 +28,7 @@ void Stage::Start()
 
 void Stage::Update()
 {
-	list<GameObject*>* EnemyList = ObjectManager::GetInstance()->GetObjectList("Enemy");
+	list<GameObject*>* EnemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
 
 	if (m_pPlayer)
 		m_pPlayer->Update();
@@ -45,7 +45,7 @@ void Stage::Update()
 			(*iter)->Update();
 	}
 	else
-		BulletList = ObjectManager::GetInstance()->GetObjectList("Bullet");
+		BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
 }
 
 void Stage::Render(HDC _hdc)

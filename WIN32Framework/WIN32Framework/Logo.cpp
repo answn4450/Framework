@@ -9,7 +9,7 @@ void Logo::Update()
 {
 	if (GetAsyncKeyState('A'))
 	{
-		SceneManager::GetInstance()->SetScene(MENU);
+		GetSingle(SceneManager)->SetScene(MENU);
 	}
 }
 

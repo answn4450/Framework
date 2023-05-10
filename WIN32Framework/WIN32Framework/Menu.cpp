@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include "SceneManager.h"
 #include "InputManager.h"
+#include "include.h"
 
 void Menu::Start()
 {
@@ -8,11 +9,11 @@ void Menu::Start()
 
 void Menu::Update()
 {
-	DWORD dwKey = InputManager::GetInstance()->GetKey();
+	DWORD dwKey = GetSingle(InputManager)->GetKey();
 	if (dwKey && KEYID_RETURN)
 	{
 		Sleep(100);
-		SceneManager::GetInstance()->SetScene(STAGE);
+		GetSingle(SceneManager)->SetScene(STAGE);
 	}
 }
 

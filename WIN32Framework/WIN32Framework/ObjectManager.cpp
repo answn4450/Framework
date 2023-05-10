@@ -2,9 +2,6 @@
 #include "GameObject.h"
 
 
-ObjectManager* ObjectManager::Instance = nullptr;
-
-
 ObjectManager::ObjectManager()
 {
 }

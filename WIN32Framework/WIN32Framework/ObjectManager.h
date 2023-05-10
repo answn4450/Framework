@@ -5,15 +5,8 @@
 class GameObject;
 class ObjectManager
 {
-private:
-	static ObjectManager* Instance;
 public:
-	static ObjectManager* GetInstance()
-	{
-		if (Instance == nullptr)
-			Instance = new ObjectManager;
-		return Instance;
-	}
+	Single(ObjectManager)
 
 private:
 	map<string, list<GameObject*>> ObjectList;

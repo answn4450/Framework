@@ -23,7 +23,7 @@ GameObject* Player::Start()
 
 
 int Player::Update() {
-	DWORD dwKey = InputManager::GetInstance()->GetKey();
+	DWORD dwKey = GetSingle(InputManager)->GetKey();
 	if (dwKey & KEYID_UP)
 	{
 		transform.position.y -= 5.0f;
@@ -46,7 +46,7 @@ int Player::Update() {
 
 	if (dwKey & KEYID_SPACE)
 	{
-		ObjectManager::GetInstance()->AddObjectList(CreateBullet());
+		GetSingle(ObjectManager)->AddObjectList(CreateBullet());
 	}
 	
 
