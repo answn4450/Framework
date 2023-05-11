@@ -2,7 +2,8 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ObjectManager.h"
-//#include "G_Enemy.h"
+#include "InputManager.h"
+#include "SceneManager.h"
 
 
 Stage::Stage() : m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
@@ -46,6 +47,14 @@ void Stage::Update()
 	}
 	else
 		BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
+
+	DWORD dwKey = GetSingle(InputManager)->GetKey();
+	if (dwKey & KEYID_RIGHT)
+	{
+		//Sleep(100);
+		//GetSingle(SceneManager)->SetScene(STAGE);
+		GetSingle(SceneManager)->NextScene();
+	}
 }
 
 void Stage::Render(HDC _hdc)

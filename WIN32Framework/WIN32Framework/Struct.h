@@ -1,4 +1,5 @@
 #pragma once
+#include "include.h"
 
 typedef struct tagVector3
 {
@@ -10,8 +11,24 @@ typedef struct tagVector3
 	
 	tagVector3(float _x, float _y, float _z) 
 		: x(_x), y(_y), z(_z) {}
-	/*
-	tagVector3 operator+=(Vector3 vector)
+
+	tagVector3 operator+(tagVector3 vector)
+	{
+		return Vector3(
+			x + vector.x,
+			y + vector.y,
+			z + vector.z);
+	}
+
+	tagVector3 operator-(tagVector3 vector)
+	{
+		return Vector3(
+			x - vector.x,
+			y - vector.y,
+			z - vector.z);
+	}
+
+	tagVector3 operator+=(tagVector3 vector)
 	{
 		x += vector.x;
 		y += vector.y;
@@ -20,20 +37,22 @@ typedef struct tagVector3
 		return Vector3(x, y, z);
 	}
 
-	tagVector3 operator*(float value)
+	tagVector3 operator-=(tagVector3 vector)
 	{
-		return Vector3(x * value, y * value, z * value);
-	}
-
-	tagVector3 operator*=(float value)
-	{
-		x *= value;
-		y *= value;
-		z *= value;
+		x -= vector.x;
+		y -= vector.y;
+		z -= vector.z;
 
 		return Vector3(x, y, z);
 	}
-	*/
+
+	tagVector3 operator*(float value)
+	{
+		return Vector3(
+			x * value,
+			y * value,
+			z * value);
+	}
 
 } Vector3;
 
@@ -46,3 +65,10 @@ typedef struct tagTransform
 
 
 } Transform;
+
+
+typedef struct tagNode
+{
+	tagNode* next;
+	int value;
+}NODE;
