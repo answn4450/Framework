@@ -18,7 +18,7 @@ const unsigned char KEYID_SPACE = 0x00000020;
 const unsigned char KEYID_ESCAPE = 0x00000040;
 const unsigned char KEYID_CONTROL = 0x00000080;
 
-#define Single(T)\
+#define SINGLE(T)\
 public:\
 	static T** GetInstance()\
 	{\
@@ -31,4 +31,4 @@ public:\
 		T(const T&) = delete;\
 		T& operator=(const T&) = delete;
 
-#define GetSingle(T) (*T::GetInstance())
+#define GET_SINGLE(T) (*T::GetInstance())

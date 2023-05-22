@@ -8,11 +8,11 @@ void Logo::Start()
 
 void Logo::Update()
 {
-	DWORD dwKey = GetSingle(InputManager)->GetKey();
+	DWORD dwKey = GET_SINGLE(InputManager)->GetKey();
 	if (dwKey & KEYID_SPACE)
 	{
-		//GetSingle(SceneManager)->SetScene(MENU);
-		GetSingle(SceneManager)->NextScene();
+		//GET_SINGLE(SceneManager)->SetScene(MENU);
+		GET_SINGLE(SceneManager)->NextScene();
 	}
 }
 

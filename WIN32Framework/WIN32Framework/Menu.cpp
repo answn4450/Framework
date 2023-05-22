@@ -9,12 +9,12 @@ void Menu::Start()
 
 void Menu::Update()
 {
-	DWORD dwKey = GetSingle(InputManager)->GetKey();
+	DWORD dwKey = GET_SINGLE(InputManager)->GetKey();
 	if (dwKey & KEYID_RETURN)
 	{
 		Sleep(100);
-		//GetSingle(SceneManager)->SetScene(STAGE);
-		GetSingle(SceneManager)->NextScene();
+		//GET_SINGLE(SceneManager)->SetScene(STAGE);
+		GET_SINGLE(SceneManager)->NextScene();
 	}
 }
 

@@ -5,7 +5,7 @@
 class InputManager
 {
 public:
-	Single(InputManager)
+	SINGLE(InputManager)
 
 public:
 	DWORD GetKey() { return inputKey; }

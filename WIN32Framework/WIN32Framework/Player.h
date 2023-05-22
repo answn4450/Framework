@@ -14,9 +14,15 @@ public:
 	virtual void Render(HDC hdc);
 	virtual void Destroy();
 public:
+	virtual GameObject* Clone() override
+	{
+		return new Player(*this);
+	}
+public:
 	GameObject* CreateBullet();
 
 public:
 	Player();
+	Player(Transform _transform) :GameObject(_transform) {}
 	~Player();
 };

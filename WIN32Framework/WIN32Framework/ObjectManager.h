@@ -6,12 +6,12 @@ class GameObject;
 class ObjectManager
 {
 public:
-	Single(ObjectManager)
+	SINGLE(ObjectManager)
 
 private:
 	map<string, list<GameObject*>> ObjectList;
 public:
-	void AddObjectList(GameObject* _Object);
+	void AddObject(GameObject* _Object);
 	list<GameObject*>* GetObjectList(string key);
 private:
 	ObjectManager();

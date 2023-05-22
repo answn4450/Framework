@@ -6,7 +6,7 @@ class Scene;
 class SceneManager
 {
 public:
-	Single(SceneManager)
+	SINGLE(SceneManager)
 private:
 	Scene* SceneState;
 	NODE* SceneList;

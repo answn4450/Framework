@@ -12,7 +12,7 @@ ObjectManager::~ObjectManager()
 }
 
 
-void ObjectManager::AddObjectList(GameObject* _Object)
+void ObjectManager::AddObject(GameObject* _Object)
 {
 	// ** 파라메터가 가르키고 있는 키 값이 현재 map에 포함되어있는지 확인.
 	map<string, list<GameObject*>>::iterator iter = ObjectList.find(_Object->GetKey());

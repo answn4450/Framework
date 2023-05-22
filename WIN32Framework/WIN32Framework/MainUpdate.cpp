@@ -16,22 +16,22 @@ void MainUpdate::Start()
 {
 	m_hdc = GetDC(g_hWnd);
 
-	GetSingle(SceneManager)->SetScene(LOGO);
+	GET_SINGLE(SceneManager)->SetScene(LOGO);
 }
 
 void MainUpdate::Update()
 {
-	GetSingle(InputManager)->CheckKey();
-	GetSingle(SceneManager)->Update();
+	GET_SINGLE(InputManager)->CheckKey();
+	GET_SINGLE(SceneManager)->Update();
 }
 
 void MainUpdate::Render()
 {
 	Rectangle(m_hdc, 0, 0, WIDTH, HEIGHT);
-	GetSingle(SceneManager)->Render(m_hdc);
+	GET_SINGLE(SceneManager)->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()
 {
-	GetSingle(SceneManager)->Destroy();
+	GET_SINGLE(SceneManager)->Destroy();
 }

@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "Prototype.h"
 
 
 Stage::Stage() : m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
@@ -17,19 +18,37 @@ Stage::~Stage()
 
 void Stage::Start()
 {
-	m_pPlayer = new Player();
-	m_pPlayer->Start();
-	
-	BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
-	EnemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
+	GET_SINGLE(Prototype)->Start();
 
-	//ObjectManager::GetInstance()->AddObjectList(
-		//(new Enemy)->Start());
+	{
+		GameObject* ProtoObj = GET_SINGLE(Prototype)->GetGameObject("Player");
+		if (ProtoObj != nullptr)
+		{
+			m_pPlayer = ProtoObj->Clone();
+			m_pPlayer->Start();
+		}
+	}
+
+	{
+		GameObject* ProtoObj = GET_SINGLE(Prototype)->GetGameObject("Enemy");
+		if (ProtoObj != nullptr)
+		{
+			GameObject* Object = ProtoObj->Clone();
+			GET_SINGLE(ObjectManager)->AddObject(Object);
+		}
+	}
+
+	GET_SINGLE(ObjectManager)->AddObject(
+		(new Enemy)->Start()
+	);
+
+	BulletList = GET_SINGLE(ObjectManager)->GetObjectList("Bullet");
+	EnemyList = GET_SINGLE(ObjectManager)->GetObjectList("Enemy");
 }
 
 void Stage::Update()
 {
-	list<GameObject*>* EnemyList = GetSingle(ObjectManager)->GetObjectList("Enemy");
+	list<GameObject*>* EnemyList = GET_SINGLE(ObjectManager)->GetObjectList("Enemy");
 
 	if (m_pPlayer)
 		m_pPlayer->Update();
@@ -46,14 +65,14 @@ void Stage::Update()
 			(*iter)->Update();
 	}
 	else
-		BulletList = GetSingle(ObjectManager)->GetObjectList("Bullet");
+		BulletList = GET_SINGLE(ObjectManager)->GetObjectList("Bullet");
 
-	DWORD dwKey = GetSingle(InputManager)->GetKey();
+	DWORD dwKey = GET_SINGLE(InputManager)->GetKey();
 	if (dwKey & KEYID_RIGHT)
 	{
 		//Sleep(100);
-		//GetSingle(SceneManager)->SetScene(STAGE);
-		GetSingle(SceneManager)->NextScene();
+		//GET_SINGLE(SceneManager)->SetScene(STAGE);
+		GET_SINGLE(SceneManager)->NextScene();
 	}
 }
 
