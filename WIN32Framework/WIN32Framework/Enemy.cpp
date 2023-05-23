@@ -8,8 +8,8 @@ GameObject* Enemy::Start()
 		(float)(rand() % (HEIGHT - 150) + 75),
 		0.0f
 	);
-	//transform.position = Vector3(WIDTH, HEIGHT / 2, 0.0f);
-	transform.direction = Vector3(0.0f, 0.0f, 0.0f);
+	transform.position = Vector3(WIDTH, HEIGHT / 2, 0.0f);
+	transform.direction = Vector3(-1.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(150.0f, 150.0f, 0.0f);
 
 	Speed = 0.5f;
@@ -20,7 +20,7 @@ GameObject* Enemy::Start()
 
 int Enemy::Update()
 {
-	//transform.position += transform.direction * Speed;
+	transform.position += transform.direction * Speed;
 	if (transform.position.x < 0)
 		return 2;
 

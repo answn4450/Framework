@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "CollisionManager.h"
 #include "Prototype.h"
 
 
@@ -62,7 +63,9 @@ void Stage::Update()
 	if (BulletList != nullptr && !BulletList->empty())
 	{
 		for (list<GameObject*>::iterator iter = BulletList->begin(); iter != BulletList->end(); ++iter)
+		{
 			(*iter)->Update();
+		}
 	}
 	else
 		BulletList = GET_SINGLE(ObjectManager)->GetObjectList("Bullet");
@@ -73,6 +76,22 @@ void Stage::Update()
 		//Sleep(100);
 		//GET_SINGLE(SceneManager)->SetScene(STAGE);
 		GET_SINGLE(SceneManager)->NextScene();
+	}
+
+	// Enemy¿Í Bullet
+	if (EnemyList != nullptr && !EnemyList->empty()
+		&& BulletList != nullptr && !BulletList->empty())
+	{
+		for (list<GameObject*>::iterator iterEnemy = EnemyList->begin(); iterEnemy != EnemyList->end(); ++iterEnemy)
+		{
+			for (list<GameObject*>::iterator iterBullet = BulletList->begin(); iterBullet != BulletList->end(); ++iterBullet)
+			{
+				if (CollisionManager::Collision(*iterBullet, *iterEnemy))
+				{
+					(*iterBullet)->Destroy();
+				}
+			}
+		}
 	}
 }
 

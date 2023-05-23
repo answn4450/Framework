@@ -25,10 +25,10 @@ public:
 		return false;
 	}
 
+	/*
 	// ** Rect Ãæµ¹
 	static bool Collision(GameObject* temp, GameObject* dest)
-	{/*
-	 */
+	{
 		//if (abs(temp->GetPosition().x- dest->GetPosition().x)< temp->GetScale().x+ dest->GetScale().x)
 		if (temp->GetPosition().x + (temp->GetScale().x * 0.5f) > dest->GetPosition().x - (dest->GetScale().x * 0.5f) &&
 			dest->GetPosition().x + (dest->GetScale().x * 0.5f) < temp->GetPosition().x - (temp->GetScale().x * 0.5f) &&
@@ -40,4 +40,5 @@ public:
 		}
 		return false;
 	}
+	*/
 };

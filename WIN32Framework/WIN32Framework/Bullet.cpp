@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "G_Enemy.h"
+#include "ObjectPool.h"
 
 GameObject* Bullet::Start()
 {
@@ -47,6 +48,8 @@ void Bullet::Render(HDC hdc)
 
 void Bullet::Destroy()
 {
+	GET_SINGLE(ObjectPool)->ReturnObject(this);
+	transform.direction = Vector3(-1.0f, 0.0f, 0.0f);
 }
 
 void Bullet::Collide()
