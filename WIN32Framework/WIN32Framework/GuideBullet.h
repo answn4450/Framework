@@ -3,6 +3,8 @@
 
 class GuideBullet :public BulletBridge
 {
+private:
+	int a = 3;
 public:
 	virtual void Start()override;
 	virtual void Update(Transform& transform)override;

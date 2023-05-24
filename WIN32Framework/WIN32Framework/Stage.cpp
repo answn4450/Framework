@@ -70,14 +70,6 @@ void Stage::Update()
 	else
 		BulletList = GET_SINGLE(ObjectManager)->GetObjectList("Bullet");
 
-	DWORD dwKey = GET_SINGLE(InputManager)->GetKey();
-	if (dwKey & KEYID_RIGHT)
-	{
-		//Sleep(100);
-		//GET_SINGLE(SceneManager)->SetScene(STAGE);
-		GET_SINGLE(SceneManager)->NextScene();
-	}
-
 	// Enemy¿Í Bullet
 	if (EnemyList != nullptr && !EnemyList->empty()
 		&& BulletList != nullptr && !BulletList->empty())

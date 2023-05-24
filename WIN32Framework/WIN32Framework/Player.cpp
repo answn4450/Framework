@@ -50,12 +50,13 @@ int Player::Update() {
 
 	if (dwKey & KEYID_SPACE)
 	{
-		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<NormalBullet>());
+		//GET_SINGLE(ObjectManager)->AddObject(CreateBullet<NormalBullet>());
+		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
 	}
 	
 	if (dwKey & KEYID_CONTROL)
 	{
-		//GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
+		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
 	}
 
 	return 0;
@@ -89,8 +90,8 @@ GameObject* Player::CreateBullet()
 		Object->Start();
 		Object->SetPosition(transform.position);
 
-		pBridge->SetObject(Object);
 		Object->SetBridge(pBridge);
+		pBridge->SetObject(Object);
 
 		return Object;
 	}

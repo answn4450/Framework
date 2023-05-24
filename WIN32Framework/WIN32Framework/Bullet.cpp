@@ -13,11 +13,6 @@ GameObject* Bullet::Start()
 
 	Key = "Bullet";
 
-	bulletBridge = new NormalBullet;
-	bulletBridge->SetObject(this);
-	if (bulletBridge)
-		bulletBridge->Start();
-
 	return this;
 }
 
@@ -26,19 +21,14 @@ void Bullet::Start(Vector3 _position)
 	transform.position = _position;
 	transform.direction = Vector3(1.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
-	
-	bulletBridge = new NormalBullet;
-	bulletBridge->SetObject(this);
-	if (bulletBridge)
-		bulletBridge->Start();
 
 	Key = "Bullet";
 }
 
 int Bullet::Update()
 {
-	if (bulletBridge)
-		bulletBridge->Update(transform);
+	if (pBridge)
+		pBridge->Update(transform);
 
 	if (transform.position.x > WIDTH)
 		return 1;
@@ -49,8 +39,8 @@ int Bullet::Update()
 
 void Bullet::Render(HDC hdc)
 {
-	if (bulletBridge)
-		bulletBridge->Render(hdc);
+	if (pBridge)
+		pBridge->Render(hdc);
 }
 
 void Bullet::Destroy()
@@ -65,7 +55,7 @@ void Bullet::Collide()
 {
 }
 
-Bullet::Bullet() : bulletBridge(nullptr)
+Bullet::Bullet()
 {
 }
 
