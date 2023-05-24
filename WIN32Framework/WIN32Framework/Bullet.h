@@ -1,8 +1,11 @@
 #pragma once
 #include "GameObject.h"
 
+class NormalBullet;
 class Bullet : public GameObject
 {
+private:
+	NormalBullet* bulletBridge;
 public:
 	virtual GameObject* Start()override;
 	virtual void Start(Vector3 _position)override;

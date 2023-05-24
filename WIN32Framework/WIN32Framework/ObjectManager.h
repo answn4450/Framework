@@ -13,6 +13,7 @@ private:
 public:
 	void AddObject(GameObject* _Object);
 	list<GameObject*>* GetObjectList(string key);
+	void Render(HDC hdc);
 private:
 	ObjectManager();
 public:

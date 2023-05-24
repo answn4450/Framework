@@ -19,6 +19,7 @@ public:
 		return new Player(*this);
 	}
 public:
+	template <typename T>
 	GameObject* CreateBullet();
 
 public:

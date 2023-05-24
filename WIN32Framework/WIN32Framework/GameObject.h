@@ -1,5 +1,6 @@
 #pragma once
 #include "Include.h"
+#include "Bridge.h"
 
 class GameObject
 {
@@ -8,6 +9,7 @@ protected:
 	float Speed;
 
 	string Key;
+	Bridge* pBridge;
 public:
 	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
 	virtual GameObject* Start()PURE;
@@ -38,8 +40,9 @@ public:
 		return this;
 	}
 
+	void SetBridge(Bridge* _bridge) { pBridge = _bridge; }
 public:
 	GameObject();
-	GameObject(Transform _transform) : transform(_transform), Speed(0.0f) {}
+	GameObject(Transform _transform) : transform(_transform), Speed(0.0f), pBridge(nullptr) {}
 	virtual ~GameObject();
 };

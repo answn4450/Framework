@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include "G_Enemy.h"
 #include "ObjectPool.h"
+#include "NormalBullet.h"
 
 GameObject* Bullet::Start()
 {
@@ -12,6 +13,11 @@ GameObject* Bullet::Start()
 
 	Key = "Bullet";
 
+	bulletBridge = new NormalBullet;
+	bulletBridge->SetObject(this);
+	if (bulletBridge)
+		bulletBridge->Start();
+
 	return this;
 }
 
@@ -20,15 +26,20 @@ void Bullet::Start(Vector3 _position)
 	transform.position = _position;
 	transform.direction = Vector3(1.0f, 0.0f, 0.0f);
 	transform.scale = Vector3(10.0f, 10.0f, 0.0f);
-
-	Speed = 15.0f;
+	
+	bulletBridge = new NormalBullet;
+	bulletBridge->SetObject(this);
+	if (bulletBridge)
+		bulletBridge->Start();
 
 	Key = "Bullet";
 }
 
 int Bullet::Update()
 {
-	transform.position += transform.direction * Speed;
+	if (bulletBridge)
+		bulletBridge->Update(transform);
+
 	if (transform.position.x > WIDTH)
 		return 1;
 
@@ -38,17 +49,15 @@ int Bullet::Update()
 
 void Bullet::Render(HDC hdc)
 {
-	Rectangle(hdc,
-		(int)(transform.position.x - transform.scale.x * 0.5f),
-		(int)(transform.position.y - transform.scale.y * 0.5f),
-		(int)(transform.position.x + transform.scale.x * 0.5f),
-		(int)(transform.position.y + transform.scale.y * 0.5f)
-	);
+	if (bulletBridge)
+		bulletBridge->Render(hdc);
 }
 
 void Bullet::Destroy()
 {
 	GET_SINGLE(ObjectPool)->ReturnObject(this);
+
+	// Destory 실행 표시
 	transform.direction = Vector3(-1.0f, 0.0f, 0.0f);
 }
 
@@ -56,7 +65,7 @@ void Bullet::Collide()
 {
 }
 
-Bullet::Bullet()
+Bullet::Bullet() : bulletBridge(nullptr)
 {
 }
 

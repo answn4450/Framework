@@ -24,7 +24,7 @@ void InputManager::CheckKey()
 		inputKey |= KEYID_CONTROL;
 }
 
-InputManager::InputManager()
+InputManager::InputManager() : inputKey()
 {
 }
 

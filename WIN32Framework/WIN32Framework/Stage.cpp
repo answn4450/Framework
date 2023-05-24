@@ -100,6 +100,7 @@ void Stage::Render(HDC _hdc)
 	if (m_pPlayer)
 		m_pPlayer->Render(_hdc);
 
+	/*
 	if (EnemyList != nullptr && !EnemyList->empty())
 	{
 		for (list<GameObject*>::iterator iter = EnemyList->begin(); iter != EnemyList->end(); ++iter)
@@ -111,6 +112,8 @@ void Stage::Render(HDC _hdc)
 		for (list<GameObject*>::iterator iter = BulletList->begin(); iter != BulletList->end(); ++iter)
 			(*iter)->Render(_hdc);
 	}
+	*/
+	GET_SINGLE(ObjectManager)->Render(_hdc);
 }
 
 void Stage::Destroy()
