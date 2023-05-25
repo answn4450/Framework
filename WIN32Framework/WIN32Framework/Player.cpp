@@ -2,6 +2,7 @@
 #include "Bullet.h"
 #include "ObjectManager.h"
 #include "InputManager.h"
+#include "ObjectPool.h"
 #include "Prototype.h"
 
 #include "NormalBullet.h"
@@ -50,13 +51,12 @@ int Player::Update() {
 
 	if (dwKey & KEYID_SPACE)
 	{
-		//GET_SINGLE(ObjectManager)->AddObject(CreateBullet<NormalBullet>());
-		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
+		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<NormalBullet>("NormalBullet"));
 	}
 	
 	if (dwKey & KEYID_CONTROL)
 	{
-		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>());
+		GET_SINGLE(ObjectManager)->AddObject(CreateBullet<GuideBullet>("GuideBullet"));
 	}
 
 	return 0;
@@ -76,25 +76,34 @@ void Player::Destroy() {}
 
 
 template <typename T>
-GameObject* Player::CreateBullet()
+GameObject* Player::CreateBullet(string _Key)
 {
-	Bridge* pBridge = new T;
-	pBridge->Start();
-	((BulletBridge*)pBridge)->SetTarget(this);
+	GameObject* Obj = GET_SINGLE(ObjectPool)->GetGameObject(_Key);
 
-	GameObject* ProtoObj = GET_SINGLE(Prototype)->GetGameObject("Bullet");
-
-	if (ProtoObj != nullptr)
+	if (Obj == nullptr)
 	{
-		GameObject* Object = ProtoObj->Clone();
-		Object->Start();
-		Object->SetPosition(transform.position);
+		Bridge* pBridge = new T;
+		pBridge->Start();
+		((BulletBridge*)pBridge)->SetTarget(this);
 
-		Object->SetBridge(pBridge);
-		pBridge->SetObject(Object);
+		GameObject* ProtoObj = GET_SINGLE(Prototype)->GetGameObject("Bullet");
 
-		return Object;
+		if (ProtoObj != nullptr)
+		{
+			GameObject* Object = ProtoObj->Clone();
+			Object->Start();
+			Object->SetPosition(transform.position);
+			Object->SetKey(_Key);
+
+			Object->SetBridge(pBridge);
+			pBridge->SetObject(Object);
+
+			return Object;
+		}
+		else
+			return nullptr;
 	}
-	else
-		return nullptr;
+
+	Obj->Start();
+	Obj->SetPosition(transform.position);
 }

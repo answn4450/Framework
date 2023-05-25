@@ -20,7 +20,7 @@ public:
 	}
 public:
 	template <typename T>
-	GameObject* CreateBullet();
+	GameObject* CreateBullet(string _Key);
 
 public:
 	Player();
