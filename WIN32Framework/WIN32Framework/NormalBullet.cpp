@@ -12,6 +12,7 @@ NormalBullet::~NormalBullet()
 void NormalBullet::Start()
 {
 	Speed = 3.5f;
+	BulletBridgeKey = "NormalBullet";
 }
 
 void NormalBullet::Update(Transform& transform)

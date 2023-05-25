@@ -2,14 +2,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "ObjectManager.h"
-#include "InputManager.h"
-#include "SceneManager.h"
-#include "CollisionManager.h"
 #include "Prototype.h"
 #include "ObjectPool.h"
 
 #include <tchar.h>
-//#include <afunix.h>
 
 Stage::Stage() : m_pPlayer(nullptr), EnemyList(nullptr), BulletList(nullptr)
 {
@@ -43,14 +39,11 @@ void Stage::Start()
 	}
 
 
-	BulletList = GET_SINGLE(ObjectManager)->GetObjectList("Bullet");
 	EnemyList = GET_SINGLE(ObjectManager)->GetObjectList("Enemy");
 }
 
 void Stage::Update()
 {
-	list<GameObject*>* EnemyList = GET_SINGLE(ObjectManager)->GetObjectList("Enemy");
-
 	if (m_pPlayer)
 		m_pPlayer->Update();
 
@@ -77,13 +70,13 @@ void Stage::Render(HDC _hdc)
 		char* NormalBuffer = new char[1024];
 
 		// ** 정수를 문자열로 변환. 10진수로 변환됨.
-		_itoa(normalList->size(), NormalBuffer, 10);
+		_itoa((int)normalList->size(), NormalBuffer, 10);
 
 		// ** 문자열 포인터를 string 으로 변환.
 		string str(NormalBuffer);
 
 		// ** 문자열 포인터 전체 삭제.
-		delete NormalBuffer;
+		delete[] NormalBuffer;
 		NormalBuffer = nullptr;
 
 		// ** 유니코드 형태로 생성.
@@ -106,7 +99,7 @@ void Stage::Render(HDC _hdc)
 		wchar_t* t = new wchar_t[(int)str.size()];
 		mbstowcs(t, str.c_str(), (int)str.size());
 
-		delete GuideBuffer;
+		delete[] GuideBuffer;
 		GuideBuffer = nullptr;
 
 		TextOut(_hdc, 50, 70, (LPCWSTR)t, (int)str.size());
@@ -122,10 +115,45 @@ void Stage::Render(HDC _hdc)
 		wchar_t* t = new wchar_t[(int)str.size()];
 		mbstowcs(t, str.c_str(), (int)str.size());
 
-		delete EnemyBuffer;
+		delete[] EnemyBuffer;
 		EnemyBuffer = nullptr;
 
-		TextOut(_hdc, 50, 50, (LPCWSTR)t, (int)str.size());
+		TextOut(_hdc, 50, 90, (LPCWSTR)t, (int)str.size());
+	}
+
+	list<GameObject*>* NormalBulletList = GET_SINGLE(ObjectPool)->GetList("NormalBullet");
+	list<GameObject*>* GuideBulletList = GET_SINGLE(ObjectPool)->GetList("GuideBullet");
+
+	if (NormalBulletList != nullptr && !NormalBulletList->empty())
+	{
+		char* normalBuffer = new char[128];
+		_itoa((int)NormalBulletList->size(), normalBuffer, 10);
+
+		string str(normalBuffer);
+
+		delete[] normalBuffer;
+		normalBuffer = nullptr;
+
+		wchar_t* t = new wchar_t[(int)str.size()];
+		mbstowcs(t, str.c_str(), (int)str.size());
+
+		TextOut(_hdc, 120, 50, (LPCWSTR)t, (int)str.size());
+	}
+
+	if (GuideBulletList != nullptr && !GuideBulletList->empty())
+	{
+		char* GuideBuffer = new char[128];
+		_itoa((int)GuideBulletList->size(), GuideBuffer, 10);
+
+		string str(GuideBuffer);
+
+		delete[] GuideBuffer;
+		GuideBuffer = nullptr;
+
+		wchar_t* t = new wchar_t[(int)str.size()];
+		mbstowcs(t, str.c_str(), (int)str.size());
+
+		TextOut(_hdc, 120, 70, (LPCWSTR)t, (int)str.size());
 	}
 #endif //DEBUG
 }

@@ -12,6 +12,7 @@ GuideBullet::~GuideBullet()
 void GuideBullet::Start()
 {
 	Speed = 2.5f;
+	BulletBridgeKey = "GuideBullet";
 }
 
 void GuideBullet::Update(Transform& transform)

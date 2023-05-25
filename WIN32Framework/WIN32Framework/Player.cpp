@@ -91,12 +91,8 @@ GameObject* Player::CreateBullet(string _Key)
 		if (ProtoObj != nullptr)
 		{
 			GameObject* Object = ProtoObj->Clone();
-			Object->Start();
-			Object->SetPosition(transform.position);
-			Object->SetKey(_Key);
-
-			Object->SetBridge(pBridge);
-			pBridge->SetObject(Object);
+			Object->Start(transform.position);
+			((BulletBridge*)pBridge)->ConnectObject(Object);
 
 			return Object;
 		}
@@ -104,6 +100,8 @@ GameObject* Player::CreateBullet(string _Key)
 			return nullptr;
 	}
 
-	Obj->Start();
-	Obj->SetPosition(transform.position);
+	Obj->Start(transform.position);
+	Obj->SetKey(_Key);
+
+	return Obj;
 }

@@ -63,7 +63,7 @@ void ObjectManager::Update()
 			if (result == 1)
 			{
 				(*iter2)->Destroy();
-				iter->second.erase(iter2);
+				iter2 = iter->second.erase(iter2);
 			}
 			else
 				++iter2;
