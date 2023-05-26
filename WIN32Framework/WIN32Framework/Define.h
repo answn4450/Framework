@@ -5,8 +5,8 @@ extern HWND g_hWnd;
 const int BULLETCOUNT = 128;
 const int COUNT = 128;
 
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 740
+#define HEIGHT 986
 
 
 const unsigned char KEYID_UP = 0x00000001;

@@ -2,6 +2,7 @@
 #include "Include.h"
 #include "Bridge.h"
 
+class Bitmap;
 class GameObject
 {
 protected:
@@ -10,6 +11,10 @@ protected:
 
 	string Key;
 	Bridge* pBridge;
+
+	static map<string, Bitmap*>* m_ImageList;
+public:
+	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
 public:
 	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
 	virtual GameObject* Start()PURE;

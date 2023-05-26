@@ -12,7 +12,6 @@ void Menu::Update()
 	DWORD dwKey = GET_SINGLE(InputManager)->GetKey();
 	if (dwKey & KEYID_RETURN)
 	{
-		Sleep(100);
 		//GET_SINGLE(SceneManager)->SetScene(STAGE);
 		GET_SINGLE(SceneManager)->NextScene();
 	}
