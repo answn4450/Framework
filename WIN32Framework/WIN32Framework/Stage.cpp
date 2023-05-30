@@ -46,12 +46,10 @@ void Stage::Start()
 	m_mapImageList = GET_SINGLE(ImageManager)->GetImageList();
 
 
-	m_mapImageList->insert(
-		make_pair("BackGround", (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp")));
-
-	m_mapImageList->insert(
-		make_pair("Buffer", (new Bitmap)->LoadBmp(L"../Resource/Stage/Buffer.bmp")));
-
+	(*m_mapImageList)["BackGround"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/BackGround.bmp");
+	(*m_mapImageList)["Buffer"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Buffer.bmp");
+	(*m_mapImageList)["Player"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/Player.bmp");
+	(*m_mapImageList)["PlayerFlipX"] = (new Bitmap)->LoadBmp(L"../Resource/Stage/PlayerFlipX.bmp");
 	GameObject::SetImageList(m_mapImageList);
 }
 
@@ -65,21 +63,26 @@ void Stage::Update()
 
 void Stage::Render(HDC _hdc)
 {
-	BitBlt(
-		_hdc,
-		0, 0, 5500, 3243,
-		(*m_mapImageList)["BackGround"]->GetMemDC(),
-		0, 0,
-		SRCCOPY
-	);
+	BitBlt((*m_mapImageList)["Buffer"]->GetMemDC(),			// 복사해 넣을 그림판 ?!
+		0, 0, WIDTH, HEIGHT,		// 복사할 영역 시작점으로부터 끝부분까지
+		(*m_mapImageList)["BackGround"]->GetMemDC(),		// 복사할 이미지
+		0, 0,				// 스케일을 잡아준다.
+		SRCCOPY);			// 소스 영역을 대상 영역에 복사한다.
 
 	if (m_pPlayer)
-		m_pPlayer->Render(_hdc);
-	
-	GET_SINGLE(ObjectManager)->Render(_hdc);
+		m_pPlayer->Render(
+			(*m_mapImageList)["Buffer"]->GetMemDC());
 
-#define debug 1
-#if debug
+	GET_SINGLE(ObjectManager)->Render(
+		(*m_mapImageList)["Buffer"]->GetMemDC());
+
+	BitBlt(_hdc,			// 복사해 넣을 그림판 ?!
+		0, 0, WIDTH, HEIGHT,		// 복사할 영역 시작점으로부터 끝부분까지
+		(*m_mapImageList)["Buffer"]->GetMemDC(),		// 복사할 이미지
+		0, 0,				// 스케일을 잡아준다.
+		SRCCOPY);			// 소스 영역을 대상 영역에 복사한다.
+
+#if DEBUG
 	list<GameObject*>* normalList = GET_SINGLE(ObjectManager)->GetObjectList("NormalBullet");
 	list<GameObject*>* enemyList = GET_SINGLE(ObjectManager)->GetObjectList("Enemy");
 	list<GameObject*>* guideList = GET_SINGLE(ObjectManager)->GetObjectList("GuideBullet");

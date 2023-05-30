@@ -4,6 +4,9 @@
 
 class Player : public GameObject
 {
+private:
+	void SwitchAnimation(string _animName);
+	bool FlipX;
 public:
 	virtual GameObject* Start();
 	virtual void Start(Vector3 _position)override

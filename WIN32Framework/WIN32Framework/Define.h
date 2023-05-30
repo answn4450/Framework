@@ -8,6 +8,7 @@ const int COUNT = 128;
 #define WIDTH 740
 #define HEIGHT 986
 
+#define DEBUG 1
 
 const unsigned char KEYID_UP = 0x00000001;
 const unsigned char KEYID_DOWN = 0x00000002;

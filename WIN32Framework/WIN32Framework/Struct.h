@@ -72,3 +72,12 @@ typedef struct tagNode
 	tagNode* next;
 	int value;
 }NODE;
+
+
+typedef struct tagFrame
+{
+	float FrameTime;
+	int CountX;
+	int CountY;
+	int EndFrame;
+} Frame;

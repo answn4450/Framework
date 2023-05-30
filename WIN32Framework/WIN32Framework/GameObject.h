@@ -8,10 +8,11 @@ class GameObject
 protected:
 	Transform transform;
 	float Speed;
-
 	string Key;
-	Bridge* pBridge;
 
+	ULONGLONG Time;
+	Frame frame;
+	Bridge* pBridge;
 	static map<string, Bitmap*>* m_ImageList;
 public:
 	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
