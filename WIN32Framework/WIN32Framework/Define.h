@@ -5,6 +5,8 @@ extern HWND g_hWnd;
 const int BULLETCOUNT = 128;
 const int COUNT = 128;
 
+#define PI 3.141592f
+
 #define WIDTH 740
 #define HEIGHT 986
 
@@ -33,3 +35,14 @@ public:\
 		T& operator=(const T&) = delete;
 
 #define GET_SINGLE(T) (*T::GetInstance())
+
+
+template <typename T>
+inline void Safe_Release(T& _Object)
+{
+	if (_Object)
+	{
+		delete _Object;
+		_Object = nullptr;
+	}
+}

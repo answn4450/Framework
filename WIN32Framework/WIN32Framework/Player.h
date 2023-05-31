@@ -1,32 +1,37 @@
 #pragma once
 #include "GameObject.h"
 
-
 class Player : public GameObject
 {
 private:
-	void SwitchAnimation(string _animName);
-	bool FlipX;
-public:
-	virtual GameObject* Start();
-	virtual void Start(Vector3 _position)override
-	{
+	bool Attack;
+	bool isJumping;
+	float jumpHeight;
+	float flightTime;
 
-	}
-	virtual int Update();
-	virtual void Render(HDC hdc);
-	virtual void Destroy();
+	int Direction;
+
+	int Option;
+	float oldY;
+	float curentY;
+	// ** flight  Time
 public:
-	virtual GameObject* Clone() override
-	{
-		return new Player(*this);
-	}
+	virtual GameObject* Start()override;
+	virtual int Update()override;
+	virtual void Render(HDC hdc)override;
+	virtual void Destroy()override;
+public:
+	virtual GameObject* Clone()override { return new Player(*this); }
 public:
 	template <typename T>
 	GameObject* CreateBullet(string _Key);
-
+	void SetFrame(int _frame, int _locomotion, int _endFrame, float _frameTime);
+	void OnAttack();
+	void OnMove();
+	void OnJump();
 public:
 	Player();
-	Player(Transform _transform) :GameObject(_transform) {}
-	~Player();
+	Player(Transform _transform) : GameObject(_transform) {}
+	virtual ~Player();
 };
+
