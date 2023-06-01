@@ -45,6 +45,11 @@ GameObject* Player::Start()
 	return this;
 }
 
+void Player::Start(Vector3 _position)
+{
+
+}
+
 int Player::Update()
 {
 	if (Time + frame.FrameTime < GetTickCount64())
@@ -160,7 +165,7 @@ void Player::Destroy()
 template <typename T>
 GameObject* Player::CreateBullet(string _Key)
 {
-	GameObject* Obj = GetSingle(ObjectPool)->GetGameObject(_Key);
+	GameObject* Obj = GET_SINGLE(ObjectPool)->GetGameObject(_Key);
 
 	if (Obj == nullptr)
 	{

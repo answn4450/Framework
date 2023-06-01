@@ -17,7 +17,6 @@ protected:
 public:
 	static void SetImageList(map<string, Bitmap*>* _ImageList) { m_ImageList = _ImageList; }
 public:
-	// PURE 쓸 때 C3646 에러 걸려서 임시 대체
 	virtual GameObject* Start()PURE;
 	virtual void Start(Vector3 _position)PURE;
 	virtual int Update()PURE;
