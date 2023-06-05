@@ -1,9 +1,8 @@
 #include "MainUpdate.h"
 #include "Stage.h"
 
-MainUpdate::MainUpdate()
+MainUpdate::MainUpdate() : stage(nullptr)
 {
-
 }
 
 MainUpdate::~MainUpdate()
@@ -15,6 +14,7 @@ MainUpdate::~MainUpdate()
 void MainUpdate::Start()
 {
 	m_hdc = GetDC(g_hWnd);
+
 	stage = new Stage;
 	stage->Start();
 }
@@ -26,12 +26,11 @@ void MainUpdate::Update()
 
 void MainUpdate::Render()
 {
-	//Rectangle(m_hdc, 0, 0, WIDTH, HEIGHT);
 	stage->Render(m_hdc);
 }
 
 void MainUpdate::Destroy()
 {
-	delete stage;
+	delete stage; 
 	stage = nullptr;
 }

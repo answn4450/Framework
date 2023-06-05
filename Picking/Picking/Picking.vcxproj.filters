@@ -34,6 +34,9 @@
     <Filter Include="소스 파일\03.Object\Tile">
       <UniqueIdentifier>{25485c20-cf80-46a7-bdcd-0f4958db0e79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\ImageManager">
+      <UniqueIdentifier>{0aba9ff0-f9cf-479c-99b4-4a33aedf5093}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -72,6 +75,12 @@
     <ClInclude Include="Tile.h">
       <Filter>소스 파일\03.Object\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>소스 파일\ImageManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Picking.cpp">
@@ -91,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>소스 파일\03.Object\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>소스 파일\ImageManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

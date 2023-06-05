@@ -6,15 +6,15 @@ class Object;
 class Stage
 {
 private:
-	Bitmap* background;
-	Object* object;
+	map<string, Bitmap*> ImageList;
+	vector<Object*> TileList;
 public:
 	void Start();
-	int Update();
-	void Render(HDC hdc);
+	void Update();
+	void Render(HDC _hdc);
 	void Destroy();
 public:
 	Stage();
-	virtual ~Stage();
+	~Stage();
 };
 
