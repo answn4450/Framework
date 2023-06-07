@@ -105,9 +105,6 @@
     <ClInclude Include="WIN32Framework.h">
       <Filter>헤더 파일\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Define.h">
-      <Filter>헤더 파일\Include</Filter>
-    </ClInclude>
     <ClInclude Include="Include.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
@@ -185,6 +182,9 @@
     </ClInclude>
     <ClInclude Include="Bitmap.h">
       <Filter>소스 파일\99.Manager\Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
