@@ -105,12 +105,6 @@
     <ClInclude Include="WIN32Framework.h">
       <Filter>헤더 파일\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Include.h">
-      <Filter>헤더 파일\Include</Filter>
-    </ClInclude>
-    <ClInclude Include="MainUpdate.h">
-      <Filter>소스 파일\00.MainUpdate</Filter>
-    </ClInclude>
     <ClInclude Include="Struct.h">
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
@@ -147,9 +141,6 @@
     <ClInclude Include="Logo.h">
       <Filter>소스 파일\02.Scene\Logo</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>소스 파일\02.Scene\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>소스 파일\02.Scene\Stage</Filter>
     </ClInclude>
@@ -180,19 +171,25 @@
     <ClInclude Include="ImageManager.h">
       <Filter>소스 파일\99.Manager\Bitmap\ImageManager</Filter>
     </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>소스 파일\02.Scene\Menu</Filter>
+    </ClInclude>
     <ClInclude Include="Bitmap.h">
       <Filter>소스 파일\99.Manager\Bitmap</Filter>
     </ClInclude>
-    <ClInclude Include="Define.h">
-      <Filter>헤더 파일\Include</Filter>
+    <ClInclude Include="MainUpdate.h">
+      <Filter>소스 파일\00.MainUpdate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WIN32Framework.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="MainUpdate.cpp">
-      <Filter>소스 파일\00.MainUpdate</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\01.GameObject\Player</Filter>
@@ -218,9 +215,6 @@
     <ClCompile Include="Logo.cpp">
       <Filter>소스 파일\02.Scene\Logo</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>소스 파일\02.Scene\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Stage.cpp">
       <Filter>소스 파일\02.Scene\Stage</Filter>
     </ClCompile>
@@ -242,8 +236,14 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>소스 파일\99.Manager\Bitmap\ImageManager</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>소스 파일\02.Scene\Menu</Filter>
+    </ClCompile>
     <ClCompile Include="Bitmap.cpp">
       <Filter>소스 파일\99.Manager\Bitmap</Filter>
+    </ClCompile>
+    <ClCompile Include="MainUpdate.cpp">
+      <Filter>소스 파일\00.MainUpdate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
